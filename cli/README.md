@@ -11,6 +11,12 @@ To run the CodePush CLI, follow these steps:
 1. Build the CLI by running `npm run build`.
 1. Install CLI globally by running `npm install -g`.
 
+## Prerequisites
+
+1. From `cli` folder run `azurite`
+2. Run `npm run start:env` from `api` folder
+3. Run `code-push-standalone register http://localhost:3000` from cli folder
+
 ## Getting started
 
 1. Create a [CodePush account](#account-creation) push using the CodePush CLI.
