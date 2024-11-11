@@ -16,6 +16,7 @@ To run the CodePush CLI, follow these steps:
 1. From `cli` folder run `azurite`
 2. Run `npm run start:env` from `api` folder
 3. Run `code-push-standalone register http://localhost:3000` from cli folder
+4. `az deployment group create --resource-group CodePushMobileApp --template-file ./codepush-infrastructure.bicep --parameters ./parameters.json`
 
 ## Getting started
 
