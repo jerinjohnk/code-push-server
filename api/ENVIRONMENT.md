@@ -2,7 +2,7 @@
 
 The CodePush Server is configured using environment variables.
 
-Currently, the following environment variables are available. For convenience, we will also load the server environment from any '.env' file in the api directory, and the test environment from any '.test.env' file in the root directory.
+For convenience, we will also load the server environment from any '.env' file in the api directory, and the test environment from any '.test.env' file in the root directory. Use the `.env.example` file as a template for setting up your environment variables.
 
 ## Mandatory parameters
 
@@ -30,6 +30,7 @@ To emulate Azure Blob Storage locally. Azurite needs to be installed and running
 
 - `MICROSOFT_CLIENT_ID`
 - `MICROSOFT_CLIENT_SECRET`
+- `MICROSOFT_TENANT_ID`: Required if application registration is single tenant.
 
 ## Optional parameters
 
