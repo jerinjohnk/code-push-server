@@ -322,6 +322,7 @@ yargs
       .command("list", "Lists the apps associated with your account", (yargs: yargs.Argv) => appList("list", yargs))
       .command("ls", "Lists the apps associated with your account", (yargs: yargs.Argv) => appList("ls", yargs))
       .command("transfer", "Transfer the ownership of an app to another account", (yargs: yargs.Argv) => {
+        isValidCommand = true;
         yargs
           .usage(USAGE_PREFIX + " app transfer <appName> <email>")
           .demand(/*count*/ 2, /*max*/ 2) // Require exactly two non-option arguments
@@ -376,7 +377,14 @@ yargs
         yargs
           .usage(USAGE_PREFIX + " deployment add <appName> <deploymentName>")
           .demand(/*count*/ 2, /*max*/ 2) // Require exactly two non-option arguments
-          .example("deployment add MyApp MyDeployment", 'Adds deployment "MyDeployment" to app "MyApp"');
+          .example("deployment add MyApp MyDeployment", 'Adds deployment "MyDeployment" to app "MyApp"')
+          .example("deployment add MyApp MyDeployment -k abc123", 'Adds deployment key "abc123"')
+          .option("key", {
+            alias: "k",
+            demand: false,
+            description: "Specify deployment key",
+            type: "string",
+          });
 
         addCommonConfiguration(yargs);
       })
@@ -1045,6 +1053,10 @@ export function createCommand(): cli.ICommand {
 
               deploymentAddCommand.appName = arg2;
               deploymentAddCommand.deploymentName = arg3;
+              if(argv["key"]){
+                deploymentAddCommand.key = argv["key"] as any;
+              }
+
             }
             break;
 
